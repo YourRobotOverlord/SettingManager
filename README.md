@@ -13,14 +13,14 @@ SettingManager automagically handles the creation of settings hives using SQLite
 
 SettingManager uses naming convention to determine the correct hive location to use.
 A prefix is used for this purpose, and can be one of the following:
-
+```
 Prefix  |   Storage Location Example
 ------------------------------------------------------------------------
 @ru     |   c:\Users\currentuser\AppData\Roaming\Domain\Application Name
 @lu     |   c:\Users\currentuser\AppData\Local\Domain\Application Name
 @ap     |   c:\ProgramData\Domain\Application Name
 none    |   c:\Users\currentuser\AppData\Local\Domain\Application Name
-
+```
 ## Usage Example
 
 ```c#
