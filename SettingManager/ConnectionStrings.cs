@@ -8,7 +8,6 @@ namespace M3Logic.Settings
     /// </summary>
     internal class ConnectionStrings
     {
-        #region Constructor
         /// <summary>
         /// SettingsManager default constructor.
         /// </summary>
@@ -34,9 +33,7 @@ namespace M3Logic.Settings
             LocalUserDbPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + specificPath;
             ApplicationDbPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + specificPath;
         }
-        #endregion
 
-        #region Enumerators
         /// <summary>
         /// Connection types that the ConnectionStringBuilder can build.
         /// </summary>
@@ -46,9 +43,7 @@ namespace M3Logic.Settings
             RoamingUser,
             Application
         }
-        #endregion
 
-        #region Private fields
         //Backing fields
         private string _roamingConnection;
         private string _localConnection;
@@ -56,9 +51,7 @@ namespace M3Logic.Settings
         //private properties
         private readonly string DomainName;
         private readonly string ApplicationName;
-        #endregion
 
-        #region Public properties
         //These are pretty self-explanatory:
         public readonly string RoamingUserDbPath;
         public readonly string LocalUserDbPath;
@@ -66,7 +59,6 @@ namespace M3Logic.Settings
         public readonly string DatabaseName;
 
         //These are read-only.
-        #region Connection string properties
         //Connection string for roaming user settings database.
         public string RoamingConnection
         {
@@ -108,10 +100,7 @@ namespace M3Logic.Settings
                 return _applicationConnection;
             }
         }
-        #endregion
-        #endregion
 
-        #region Helpers
         /// <summary>
         /// Builds connections strings based and the passed type.
         /// </summary>
@@ -140,7 +129,6 @@ namespace M3Logic.Settings
             //Return the fully constructed SQLite connection string.
             return $"Data Source={path};Version=3;";
         }
-        #endregion
 
         /// <summary>
         /// Returns a DatabaseRoute object containing the path and connection string for

@@ -35,16 +35,13 @@ namespace M3Logic.Settings
     /// </summary>
     public class SettingManager
     {
-        #region Enumerators
         //Defines the behaviors available if a setting is not found.
         public enum SettingNotFoundBehaviors
         {
             ReturnDefault, //Default
             ThrowError
         }
-        #endregion
 
-        #region Private fields
 
         //Object used to lock Hashtable updates.
         private readonly object SyncRoot = new object();
@@ -56,18 +53,14 @@ namespace M3Logic.Settings
         //Instantiated in constructor for this.
         private readonly ConnectionStrings ConnectionStrings;
 
-        #endregion
 
-        #region Public properties
         /// <summary>
         /// Determines whether we throw an error if a setting is missing or just return a default(T).
         /// Default behavior is to return default(T).
         /// </summary>
         public SettingNotFoundBehaviors SettingNotFoundBehavior { get; set; }
 
-        #endregion
 
-        #region Constructor
         /// <summary>
         /// SettingsManager default constructor.
         /// </summary>
@@ -84,9 +77,7 @@ namespace M3Logic.Settings
             //Instantiate ConnectionsStrings, passing along domainName, applicationName and databaseName.
             ConnectionStrings = new ConnectionStrings(domainName, applicationName, databaseName);
         }
-        #endregion
 
-        #region Public methods
         /// <summary>
         /// Saves an object to a settings store, determined by the key prefix.
         /// </summary>
@@ -193,9 +184,7 @@ namespace M3Logic.Settings
             _settingsCache[key] = value;
             return (T)value;
         }
-        #endregion
 
-        #region Data access
 
         /// <summary>
         /// Creates new settings database at the supplied route.
@@ -281,9 +270,7 @@ namespace M3Logic.Settings
                 throw;
             }
         }
-        #endregion
 
-        #region Serialization
 
         /// <summary>
         /// De-serializes a string of XML into an object T.
@@ -345,9 +332,7 @@ namespace M3Logic.Settings
                 throw;
             }
         }
-        #endregion
 
-        #region Helpers
 
         /// <summary>
         /// Strips the routing prefix from the key if it has one.
@@ -358,6 +343,5 @@ namespace M3Logic.Settings
         {
             return key.Substring(0, 1) == "@" ? key.Substring(3, key.Length - 3) : key;
         }
-        #endregion
     }
 }
