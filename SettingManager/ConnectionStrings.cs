@@ -21,17 +21,12 @@ namespace M3Logic.Settings
             {
                 throw new Exception("Domain, Application and Database name are all required to be != IsNullOrEmpty.");
             }
-            DomainName = domainName;
-            ApplicationName = applicationName;
-            DatabaseName = databaseName;
 
-            string specificPath = Path.DirectorySeparatorChar + DomainName +
-                Path.DirectorySeparatorChar + ApplicationName +
-                Path.DirectorySeparatorChar;
+            string specificPath = Path.Combine(domainName, applicationName, databaseName);
 
-            RoamingUserDbPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + specificPath;
-            LocalUserDbPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + specificPath;
-            ApplicationDbPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + specificPath;
+            RoamingUserDbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), specificPath);
+            LocalUserDbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), specificPath);
+            ApplicationDbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), specificPath);
         }
 
         /// <summary>
@@ -48,9 +43,6 @@ namespace M3Logic.Settings
         private string _roamingConnection;
         private string _localConnection;
         private string _applicationConnection;
-        //private properties
-        private readonly string DomainName;
-        private readonly string ApplicationName;
 
         //These are pretty self-explanatory:
         public readonly string RoamingUserDbPath;
